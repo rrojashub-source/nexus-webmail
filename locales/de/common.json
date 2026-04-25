@@ -42,7 +42,8 @@
       "access_denied": "Zugriff verweigert. Bitte kontaktieren Sie Ihren Administrator.",
       "back_to_login": "Zurück zur Anmeldung",
       "requires_https": "Single Sign-On erfordert eine sichere Verbindung. Bitte greifen Sie über HTTPS auf dieses Webmail zu (oder localhost in der Entwicklung)."
-    }
+    },
+    "select_company": "Unternehmen auswählen"
   },
   "sidebar": {
     "close": "Schließen",

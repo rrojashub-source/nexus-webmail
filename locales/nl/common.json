@@ -42,7 +42,8 @@
       "access_denied": "Toegang geweigerd. Neem contact op met uw beheerder.",
       "back_to_login": "Terug naar inloggen",
       "requires_https": "Single Sign-On vereist een beveiligde verbinding. Open deze webmail via HTTPS (of localhost tijdens de ontwikkeling)."
-    }
+    },
+    "select_company": "Selecteer uw bedrijf"
   },
   "sidebar": {
     "close": "Sluiten",

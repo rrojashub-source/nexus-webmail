@@ -42,7 +42,8 @@
       "access_denied": "アクセスが拒否されました。管理者にお問い合わせください。",
       "back_to_login": "ログインに戻る",
       "requires_https": "シングルサインオンには安全な接続が必要です。HTTPS（または開発時は localhost）でこのウェブメールにアクセスしてください。"
-    }
+    },
+    "select_company": "会社を選択"
   },
   "sidebar": {
     "close": "閉じる",

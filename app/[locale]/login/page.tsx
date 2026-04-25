@@ -9,10 +9,11 @@ import { Input } from "@/components/ui/input";
 import { useAuthStore } from "@/stores/auth-store";
 import { useConfig } from "@/hooks/use-config";
 import { cn } from "@/lib/utils";
-import { Mail, AlertCircle, Loader2, X, Info, Eye, EyeOff, LogIn } from "lucide-react";
+import { Mail, AlertCircle, Loader2, X, Info, Eye, EyeOff, LogIn, ChevronRight } from "lucide-react";
 import { discoverOAuth, type OAuthMetadata } from "@/lib/oauth/discovery";
 import { generateCodeVerifier, generateCodeChallenge, generateState } from "@/lib/oauth/pkce";
 import { OAUTH_SCOPES } from "@/lib/oauth/tokens";
+import { COMPANIES } from "@/lib/companies";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -524,24 +525,60 @@ export default function LoginPage() {
                 </div>
               )}
 
-              <Button
-                type="button"
-                variant={oauthOnly ? "default" : "outline"}
-                className={cn(
-                  "w-full h-12 font-medium text-base",
-                  oauthOnly && "bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20"
-                )}
-                onClick={handleOAuthLogin}
-                disabled={oauthLoading || isLoading}
-                autoFocus={oauthOnly}
-              >
-                {oauthLoading ? (
-                  <Loader2 className="w-4 h-4 animate-spin mr-2" />
-                ) : (
-                  <LogIn className="w-4 h-4 mr-2" />
-                )}
-                {t("sign_in_sso")}
-              </Button>
+              {oauthOnly ? (
+                <div className="space-y-2.5">
+                  <p className="text-xs text-center text-muted-foreground uppercase tracking-wider mb-4">
+                    {t("select_company")}
+                  </p>
+                  {COMPANIES.map((company) => (
+                    <button
+                      key={company.id}
+                      type="button"
+                      onClick={handleOAuthLogin}
+                      disabled={oauthLoading || isLoading}
+                      className="w-full group flex items-center gap-4 p-3.5 rounded-xl border border-border/50 bg-secondary/20 hover:bg-secondary/60 hover:border-border hover:shadow-sm transition-all duration-200 text-left disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      <div className="w-11 h-11 rounded-xl overflow-hidden flex-shrink-0 shadow-sm">
+                        <img
+                          src={company.logo}
+                          alt={company.name}
+                          width={44}
+                          height={44}
+                          className="w-full h-full"
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-medium text-sm text-foreground truncate">
+                          {company.name}
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-0.5">
+                          {oauthLoading ? t("signing_in") : t("sign_in")}
+                        </p>
+                      </div>
+                      {oauthLoading ? (
+                        <Loader2 className="w-4 h-4 animate-spin text-muted-foreground flex-shrink-0" />
+                      ) : (
+                        <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+                      )}
+                    </button>
+                  ))}
+                </div>
+              ) : (
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="w-full h-12 font-medium text-base"
+                  onClick={handleOAuthLogin}
+                  disabled={oauthLoading || isLoading}
+                >
+                  {oauthLoading ? (
+                    <Loader2 className="w-4 h-4 animate-spin mr-2" />
+                  ) : (
+                    <LogIn className="w-4 h-4 mr-2" />
+                  )}
+                  {t("sign_in_sso")}
+                </Button>
+              )}
             </>
           )}
 

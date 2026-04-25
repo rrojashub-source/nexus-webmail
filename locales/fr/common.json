@@ -42,7 +42,8 @@
       "access_denied": "L'accès a été refusé. Veuillez contacter votre administrateur.",
       "back_to_login": "Retour à la connexion",
       "requires_https": "L'authentification SSO nécessite une connexion sécurisée. Accédez à ce webmail via HTTPS (ou localhost en développement)."
-    }
+    },
+    "select_company": "Sélectionnez votre entreprise"
   },
   "sidebar": {
     "close": "Fermer",

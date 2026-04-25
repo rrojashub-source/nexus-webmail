@@ -42,7 +42,8 @@
       "access_denied": "Acesso negado. Entre em contato com seu administrador.",
       "back_to_login": "Voltar ao login",
       "requires_https": "O Single Sign-On requer uma ligação segura. Aceda a este webmail através de HTTPS (ou localhost em desenvolvimento)."
-    }
+    },
+    "select_company": "Selecione sua empresa"
   },
   "sidebar": {
     "close": "Fechar",
