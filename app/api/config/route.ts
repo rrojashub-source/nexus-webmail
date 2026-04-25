@@ -17,7 +17,9 @@ export async function GET() {
   logger.debug('Config requested');
   return NextResponse.json({
     appName: process.env.APP_NAME || process.env.NEXT_PUBLIC_APP_NAME || 'Webmail',
-    jmapServerUrl: process.env.JMAP_SERVER_URL || process.env.NEXT_PUBLIC_JMAP_SERVER_URL || '',
+    // JMAP_CLIENT_URL: URL que ve el browser (usa proxy local para evitar CORS).
+    // Si no está definido, cae a JMAP_SERVER_URL (conexión directa a Stalwart).
+    jmapServerUrl: process.env.JMAP_CLIENT_URL || process.env.JMAP_SERVER_URL || process.env.NEXT_PUBLIC_JMAP_SERVER_URL || '',
     oauthEnabled: process.env.OAUTH_ENABLED === 'true' || process.env.OAUTH_ONLY === 'true',
     oauthClientId: process.env.OAUTH_CLIENT_ID || '',
     oauthIssuerUrl: process.env.OAUTH_ISSUER_URL || '',
