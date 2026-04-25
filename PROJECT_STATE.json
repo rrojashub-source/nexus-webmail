@@ -1,0 +1,73 @@
+{
+  "project": "NEXUS_WEBMAIL",
+  "version": "0.1.0",
+  "phase": "Phase 1 — Login OAuth2",
+  "description": "Cliente webmail empresarial RYM Corporation. Fork de root-fr/jmap-webmail (MIT) con OAuth2 PKCE contra Stalwart.",
+  "last_updated": "2026-04-24",
+  "updated_by": "NEXUS@CLI",
+  "status": "en progreso — dev server corriendo, OAuth2 configurado, pendiente verificar login en browser",
+  "github": "https://github.com/rrojashub-source/nexus-webmail",
+  "stack": {
+    "framework": "Next.js 16 App Router",
+    "language": "TypeScript strict",
+    "styles": "Tailwind CSS v4",
+    "state": "Zustand",
+    "jmap": "cliente propio en lib/jmap/client.ts",
+    "auth": "OAuth2 PKCE en lib/oauth/",
+    "linter": "Biome (reemplazó ESLint)",
+    "tests": "Vitest + Testing Library",
+    "deploy": "Docker + Nginx → Mini PC"
+  },
+  "infrastructure": {
+    "stalwart_url": "https://mail.ricardo-nexus.dev",
+    "ssl": "Let's Encrypt válido (expira 2026-07-09)",
+    "storage_backend": "RocksDB",
+    "oauth_client_id": "nexus-webmail",
+    "oauth_redirect_dev": "http://localhost:3000/api/auth/callback",
+    "oauth_redirect_prod": "https://webmail.rymcorporation.com/api/auth/callback",
+    "oauth_registered": "2026-04-24 via REST API"
+  },
+  "email_accounts": [
+    "ricardorojas@rymcorporation.com",
+    "admin@electroservicesusa.com",
+    "sales@electroservicesusa.com",
+    "ricardorojas@centralpowersolutions.com"
+  ],
+  "decisions": [
+    {
+      "date": "2026-04-24",
+      "decision": "Fork root-fr/jmap-webmail (MIT) en lugar de build desde cero",
+      "reason": "El fork v1.5.1 ya incluye OAuth2 PKCE, cliente JMAP completo, calendario, contactos. 1-2 semanas a MVP vs 3-6 meses desde cero."
+    },
+    {
+      "date": "2026-04-24",
+      "decision": "Proyecto separado de RED INTERNA",
+      "reason": "Es una aplicación Next.js completa (package.json, Docker, CI) — no infraestructura. Similar a RYM_WEB o NEXUS_DASHBOARD."
+    },
+    {
+      "date": "2026-04-24",
+      "decision": "Biome reemplaza ESLint",
+      "reason": "Estándar ecosistema NEXUS. Más rápido, sin config compleja."
+    },
+    {
+      "date": "2026-04-24",
+      "decision": "node_modules en filesystem Linux (/home/ricardo/nexus-webmail-modules) con symlink a proyecto en NTFS",
+      "reason": "NTFS via WSL tiene conflictos de rename con npm install en node_modules grandes."
+    }
+  ],
+  "last_session": {
+    "date": "2026-04-24",
+    "completed": [
+      "Fork privado creado en GitHub (rrojashub-source/nexus-webmail)",
+      "npm install completado (node_modules en Linux filesystem)",
+      "Biome instalado y configurado",
+      "OAuth2 client 'nexus-webmail' registrado en Stalwart via REST API",
+      ".env.local configurado: JMAP_SERVER_URL, OAUTH_ENABLED, OAUTH_CLIENT_ID",
+      "Dev server corriendo en localhost:3001 — oauthEnabled=true verificado",
+      "Stalwart OAuth discovery funcionando (/.well-known/oauth-authorization-server)",
+      "CLAUDE.md + memory/shared/current_phase.md creados",
+      "Commit inicial pusheado a GitHub"
+    ],
+    "next_step": "Verificar flujo login OAuth2 en browser (localhost:3001). Si funciona → Phase 2: branding RYM + deploy Docker Mini PC. Si hay error CORS/redirect → diagnosticar y corregir redirect_uri en Stalwart."
+  }
+}
