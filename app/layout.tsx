@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "JMAP Webmail",
-  description: "Minimalist webmail client using JMAP protocol",
+  title: "NEXUS Webmail",
+  description: "Cliente de correo empresarial RYM Corporation",
 };
 
 export default async function RootLayout({
