@@ -8,16 +8,16 @@ export const COMPANIES: Company[] = [
   {
     id: 'rym',
     name: 'RYM Corporation',
-    logo: '/logos/rym.svg',
+    logo: '/logos/rym.png',
   },
   {
     id: 'electroser',
     name: 'Electroservices USA',
-    logo: '/logos/electroser.svg',
+    logo: '/logos/electroser.png',
   },
   {
     id: 'central-power',
     name: 'Central Power Solutions',
-    logo: '/logos/central-power.svg',
+    logo: '/logos/central-power.png',
   },
 ];

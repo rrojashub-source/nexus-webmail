@@ -1,10 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#1d4ed8"/>
-      <stop offset="100%" stop-color="#1e40af"/>
-    </linearGradient>
-  </defs>
-  <rect width="48" height="48" rx="10" fill="url(#g)"/>
-  <text x="24" y="32" font-family="system-ui,-apple-system,sans-serif" font-weight="700" font-size="16" fill="white" text-anchor="middle" letter-spacing="1">RYM</text>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 340 120"
+     width="340" height="120">
+  <!-- R Y M — Arkhip, tracking generoso -->
+  <g fill="#398860">
+    <path d="M219 389Q253 409 288 413.5Q323 418 360 418H502Q559 418 594 445Q629 472 629 532Q629 561 619 581Q609 601 592 613.5Q575 626 552 631.5Q529 637 502 637H219ZM447 309H360Q324 309 288.5 303.5Q253 298 219 280V0H110V746H502Q553 746 596 731.5Q639 717 670.5 689Q702 661 719.5 620Q737 579 737 526Q737 441 691.5 387Q646 333 565 313L623 194Q641 168 654 152Q667 136 679 126.5Q691 117 704 113.5Q717 110 735 110L770 111V0Q738 0 705.5 2Q673 4 643 15Q613 26 586 50Q559 74 538 118Z"
+          transform="translate(18, 85) scale(0.1,-0.1)" />
+    <path d="M357 418Q426 490 479 574Q532 658 564 746H689Q635 620 565.5 517Q496 414 411 323V0H303V323Q218 414 148.5 517Q79 620 25 746H150Q182 658 235 574Q288 490 357 418Z"
+          transform="translate(127, 85) scale(0.1,-0.1)" />
+    <path d="M492 208 239 513V0H132V641L45 746H186L491 380L800 746H941L854 641V0H747V513Z"
+          transform="translate(223.4, 85) scale(0.1,-0.1)" />
+  </g>
+  <!-- ⚡ MATERIAL ELÉCTRICO SIN FRICCIÓN -->
+  <g transform="translate(170, 107)">
+    <path d="M-105 -4 l3 5 h-2 l4 7 l-2 -4 h2 l-5 -8z" fill="#398860" />
+    <text x="-91" y="4"
+          font-family="'Chakra Petch', 'Inter', 'Segoe UI', sans-serif"
+          font-size="9.5" font-weight="600"
+          fill="#398860" letter-spacing="0.18em"
+          text-anchor="start">MATERIAL ELÉCTRICO SIN FRICCIÓN</text>
+  </g>
 </svg>

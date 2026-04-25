@@ -538,13 +538,11 @@ export default function LoginPage() {
                       disabled={oauthLoading || isLoading}
                       className="w-full group flex items-center gap-4 p-3.5 rounded-xl border border-border/50 bg-secondary/20 hover:bg-secondary/60 hover:border-border hover:shadow-sm transition-all duration-200 text-left disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      <div className="w-11 h-11 rounded-xl overflow-hidden flex-shrink-0 shadow-sm">
+                      <div className="h-10 w-28 flex-shrink-0 flex items-center justify-start">
                         <img
                           src={company.logo}
                           alt={company.name}
-                          width={44}
-                          height={44}
-                          className="w-full h-full"
+                          className="max-h-full max-w-full object-contain object-left"
                         />
                       </div>
                       <div className="flex-1 min-w-0">
