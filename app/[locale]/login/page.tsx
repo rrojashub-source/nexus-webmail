@@ -256,7 +256,7 @@ export default function LoginPage() {
     }
   };
 
-  const handleOAuthLogin = async () => {
+  const handleOAuthLogin = async (loginHint?: string) => {
     if (!oauthMetadata || !oauthClientId) return;
 
     // PKCE needs Web Crypto (SubtleCrypto.digest). That API is only exposed
@@ -288,6 +288,9 @@ export default function LoginPage() {
     authUrl.searchParams.set("state", state);
     authUrl.searchParams.set("code_challenge", challenge);
     authUrl.searchParams.set("code_challenge_method", "S256");
+    if (loginHint) {
+      authUrl.searchParams.set("login_hint", loginHint);
+    }
 
     window.location.href = authUrl.toString();
   };
@@ -534,7 +537,7 @@ export default function LoginPage() {
                     <button
                       key={company.id}
                       type="button"
-                      onClick={handleOAuthLogin}
+                      onClick={() => handleOAuthLogin(company.loginHint)}
                       disabled={oauthLoading || isLoading}
                       className="w-full group flex items-center gap-4 p-3.5 rounded-xl border border-border/50 bg-secondary/20 hover:bg-secondary/60 hover:border-border hover:shadow-sm transition-all duration-200 text-left disabled:opacity-50 disabled:cursor-not-allowed"
                     >
@@ -566,7 +569,7 @@ export default function LoginPage() {
                   type="button"
                   variant="outline"
                   className="w-full h-12 font-medium text-base"
-                  onClick={handleOAuthLogin}
+                  onClick={() => handleOAuthLogin()}
                   disabled={oauthLoading || isLoading}
                 >
                   {oauthLoading ? (
