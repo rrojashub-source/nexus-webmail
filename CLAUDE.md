@@ -16,8 +16,8 @@ desde cualquier browser, sin depender de comandos MCP.**
 | SSL | Let's Encrypt válido (renueva automático) |
 | Backend | RocksDB |
 | OAuth2 client_id | `nexus-webmail` (registrado 2026-04-24) |
-| Redirect DEV | `http://localhost:3000/api/auth/callback` |
-| Redirect PROD | `https://webmail.rymcorporation.com/api/auth/callback` |
+| Redirect DEV | `http://localhost:3000/auth/callback` |
+| Redirect PROD | `https://webmail.rymcorporation.com/auth/callback` |
 
 ## Cuentas Stalwart
 - `ricardorojas@rymcorporation.com`

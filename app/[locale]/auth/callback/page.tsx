@@ -45,7 +45,8 @@ function OAuthCallbackInner() {
       return;
     }
 
-    const redirectUri = `${window.location.origin}/${params.locale}/auth/callback`;
+    // localePrefix: 'never' — locale is NOT in the URL, so omit it from redirect_uri
+    const redirectUri = `${window.location.origin}/auth/callback`;
 
     loginWithOAuth(serverUrl, code, codeVerifier, redirectUri)
       .then((success) => {

@@ -328,8 +328,8 @@ export const useAuthStore = create<AuthState>()(
             })
             .then((data) => {
               if (data.end_session_url) {
-                const locale = window.location.pathname.split('/')[1] || 'en';
-                const redirectUri = `${window.location.origin}/${locale}/login`;
+                // localePrefix: 'never' — locale is NOT in the URL
+                const redirectUri = `${window.location.origin}/login`;
                 const url = new URL(data.end_session_url);
                 url.searchParams.set('post_logout_redirect_uri', redirectUri);
                 window.location.href = url.toString();

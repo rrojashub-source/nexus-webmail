@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "phase": "Phase 1 — Login OAuth2",
   "description": "Cliente webmail empresarial RYM Corporation. Fork de root-fr/jmap-webmail (MIT) con OAuth2 PKCE contra Stalwart.",
-  "last_updated": "2026-04-24",
-  "updated_by": "NEXUS@CLI",
-  "status": "en progreso — dev server corriendo, OAuth2 configurado, pendiente verificar login en browser",
+  "last_updated": "2026-05-04",
+  "updated_by": "NEXUS@ARC-S486",
+  "status": "bugs OAuth2 corregidos (S486) — listo para verificar login en browser con npm run dev",
   "github": "https://github.com/rrojashub-source/nexus-webmail",
   "stack": {
     "framework": "Next.js 16 App Router",
@@ -68,6 +68,6 @@
       "CLAUDE.md + memory/shared/current_phase.md creados",
       "Commit inicial pusheado a GitHub"
     ],
-    "next_step": "Verificar flujo login OAuth2 en browser (localhost:3001). Si funciona → Phase 2: branding RYM + deploy Docker Mini PC. Si hay error CORS/redirect → diagnosticar y corregir redirect_uri en Stalwart."
+    "next_step": "Verificar flujo login OAuth2 en browser (localhost:3000 via npm run dev). Bugs corregidos en S486: (1) redirect_uri incluía locale prefix incorrecto con localePrefix:never, (2) Stalwart tenía /api/auth/callback pero código genera /auth/callback, (3) JMAP_CLIENT_URL apuntaba a localhost:3001. Todo corregido. Si login funciona → Phase 2: branding RYM + deploy Docker Mini PC."
   }
 }
