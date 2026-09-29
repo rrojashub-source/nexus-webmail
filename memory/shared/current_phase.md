@@ -11,8 +11,8 @@
 
 ## Dónde quedó cada cosa
 - Código: GitHub `rrojashub-source/nexus-webmail`, main `8514129` (incluye fixes S486 + login_hint).
-- Producción (en apagado, a cargo de RED INTERNA): contenedor `nexus-webmail` en nexus-server :3002,
-  `https://webmail.ricardo-nexus.dev`, client OAuth `nexus-webmail` (ID 44) en Stalwart.
+- Producción: RETIRADA 2026-09-28 por RED INTERNA (commit 2d00ce8). Clientes OAuth 44 y 45 borrados;
+  vhost, cert y DNS de webmail.ricardo-nexus.dev borrados. Imagen y carpeta conservadas en nexus-server.
 
 ## Si alguien reabre esto
 No lo revivas como webmail: la decisión y sus motivos están en `PROJECT_STATE.json` → `decisions`.

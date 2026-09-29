@@ -5,7 +5,7 @@
   "description": "Cliente webmail empresarial RYM Corporation. Fork de root-fr/jmap-webmail (MIT) con OAuth2 PKCE contra Stalwart.",
   "last_updated": "2026-09-28",
   "updated_by": "NEXUS@NEXUS_WEBMAIL",
-  "status": "archived — 2026-09-28. Código en GitHub (main 8514129). Infra (contenedor nexus-server :3002, vhost webmail.ricardo-nexus.dev, client OAuth Stalwart ID 44) delegada a RED INTERNA para apagar.",
+  "status": "archived — 2026-09-28. Código en GitHub. Infra retirada por RED INTERNA (commit 2d00ce8): contenedor apagado, vhost/cert/DNS webmail.ricardo-nexus.dev borrados, clientes OAuth 44 y 45 borrados en Stalwart. Imagen y carpeta ~/nexus-webmail conservadas en nexus-server.",
   "github": "https://github.com/rrojashub-source/nexus-webmail",
   "stack": {
     "framework": "Next.js 16 App Router",
@@ -22,11 +22,11 @@
     "stalwart_url": "https://mail.ricardo-nexus.dev",
     "ssl": "Let's Encrypt válido (renovado, expira 2026-11-06)",
     "storage_backend": "RocksDB",
-    "oauth_client_id": "nexus-webmail",
+    "oauth_client_id": "nexus-webmail — BORRADO 2026-09-28 (eran dos clientes: ID 44 con callbacks webmail.ricardo-nexus.dev + localhost:3001; ID 45 csafp9cc8b0kpqbesykj con localhost:3000 + webmail.rymcorporation.com)",
     "oauth_redirect_dev": "http://localhost:3000/auth/callback (corregido en S486; antes /api/auth/callback)",
     "oauth_redirect_prod": "https://webmail.rymcorporation.com/auth/callback (nunca usado: el dominio no resuelve)",
     "oauth_registered": "2026-04-24 via REST API",
-    "deploy_real": "nexus-server (ThinkCentre M90q) contenedor nexus-webmail :3002 → https://webmail.ricardo-nexus.dev. Imagen del 2026-04-24 23:05 (anterior a login_hint y S486), trasladada el 2026-08-16 en la migración con docker save/load. En apagado vía RED INTERNA."
+    "deploy_real": "RETIRADO 2026-09-28. Era nexus-server :3002 → https://webmail.ricardo-nexus.dev (imagen del 24-abr). Se conservan la imagen nexus-webmail:latest y ~/nexus-webmail en nexus-server."
   },
   "email_accounts": [
     "ricardorojas@rymcorporation.com",
@@ -78,8 +78,9 @@
       "Push de los 7 commits a GitHub (325814d..8514129)",
       "Consulta a RYM_SUITE: T313 correo integrado confirmado en producción",
       "Decisión: archivar (opción A, aprobada por Ricardo)",
-      "Pedido a RED INTERNA: apagar contenedor, vhost público y client OAuth ID 44"
+      "Pedido a RED INTERNA: apagar contenedor, vhost público y client OAuth ID 44",
+      "RED INTERNA retiró la infra (commit 2d00ce8), verificado desde aquí: contenedor ausente, URL pública sin respuesta, SnappyMail intacto"
     ],
-    "next_step": "Ninguno en este repo. Esperar la confirmación de RED INTERNA de que la infra quedó apagada. Si algún día se quiere una UI de correo → hacerla en RYM_SUITE (T313)."
+    "next_step": "Ninguno. Proyecto cerrado. UI de correo → RYM_SUITE (T313)."
   }
 }
