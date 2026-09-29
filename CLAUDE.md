@@ -1,5 +1,9 @@
 # NEXUS Webmail — RYM Corporation
 
+> ⛔ **ARCHIVADO 2026-09-28** (aprobado por Ricardo). No desarrollar aquí.
+> Webmail genérico = SnappyMail (VPS2). Correo con contexto de negocio = RYM_SUITE T313
+> (la UI de correo pendiente va allá). Motivos en `PROJECT_STATE.json` → `decisions`.
+
 ## Misión
 Cliente web de correo empresarial self-hosted para RYM Corporation.
 Fork de `root-fr/jmap-webmail` (MIT) personalizado con branding RYM y

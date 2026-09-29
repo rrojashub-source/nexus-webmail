@@ -1,11 +1,11 @@
 {
   "project": "NEXUS_WEBMAIL",
   "version": "0.1.0",
-  "phase": "Phase 1 — Login OAuth2",
+  "phase": "ARCHIVADO",
   "description": "Cliente webmail empresarial RYM Corporation. Fork de root-fr/jmap-webmail (MIT) con OAuth2 PKCE contra Stalwart.",
-  "last_updated": "2026-05-04",
-  "updated_by": "NEXUS@ARC-S486",
-  "status": "bugs OAuth2 corregidos (S486) — listo para verificar login en browser con npm run dev",
+  "last_updated": "2026-09-28",
+  "updated_by": "NEXUS@NEXUS_WEBMAIL",
+  "status": "archived — 2026-09-28. Código en GitHub (main 8514129). Infra (contenedor nexus-server :3002, vhost webmail.ricardo-nexus.dev, client OAuth Stalwart ID 44) delegada a RED INTERNA para apagar.",
   "github": "https://github.com/rrojashub-source/nexus-webmail",
   "stack": {
     "framework": "Next.js 16 App Router",
@@ -20,12 +20,13 @@
   },
   "infrastructure": {
     "stalwart_url": "https://mail.ricardo-nexus.dev",
-    "ssl": "Let's Encrypt válido (expira 2026-07-09)",
+    "ssl": "Let's Encrypt válido (renovado, expira 2026-11-06)",
     "storage_backend": "RocksDB",
     "oauth_client_id": "nexus-webmail",
-    "oauth_redirect_dev": "http://localhost:3000/api/auth/callback",
-    "oauth_redirect_prod": "https://webmail.rymcorporation.com/api/auth/callback",
-    "oauth_registered": "2026-04-24 via REST API"
+    "oauth_redirect_dev": "http://localhost:3000/auth/callback (corregido en S486; antes /api/auth/callback)",
+    "oauth_redirect_prod": "https://webmail.rymcorporation.com/auth/callback (nunca usado: el dominio no resuelve)",
+    "oauth_registered": "2026-04-24 via REST API",
+    "deploy_real": "nexus-server (ThinkCentre M90q) contenedor nexus-webmail :3002 → https://webmail.ricardo-nexus.dev. Imagen del 2026-04-24 23:05 (anterior a login_hint y S486), trasladada el 2026-08-16 en la migración con docker save/load. En apagado vía RED INTERNA."
   },
   "email_accounts": [
     "ricardorojas@rymcorporation.com",
@@ -53,21 +54,32 @@
       "date": "2026-04-24",
       "decision": "node_modules en filesystem Linux (/home/ricardo/nexus-webmail-modules) con symlink a proyecto en NTFS",
       "reason": "NTFS via WSL tiene conflictos de rename con npm install en node_modules grandes."
+    },
+    {
+      "date": "2026-04-25",
+      "decision": "T070 NEXUS Webmail → deferred (tomada desde RED INTERNA, no registrada aquí hasta 2026-09-28)",
+      "reason": "SnappyMail en VPS2 resuelve mejor el caso multi-cuenta (hoy 17 cuentas, firmas HTML, contactos). Fuente: NEXUS_COMMS/handoffs/2026-04-25-snappymail-vps2.md"
+    },
+    {
+      "date": "2026-09-28",
+      "decision": "Proyecto ARCHIVADO",
+      "reason": "Ricardo aprobó la opción A. El webmail genérico lo cubre SnappyMail; el correo con contexto de negocio (clasificación, vínculo a cotizaciones/SO/OP/facturas, vigía, Kanban) ya existe en RYM_SUITE T313 por IMAP/SMTP. La UI de correo pendiente se hará dentro de RYM_SUITE, no aquí. Mantener un servicio OAuth público sin uso era superficie de ataque sin beneficio."
+    },
+    {
+      "date": "2026-09-28",
+      "decision": "Rechazado: revivir NEXUS_WEBMAIL como 'correo + CEREBRO/RYM_SUITE' (opción C)",
+      "reason": "Duplicaría lo que RYM_SUITE T313 ya tiene en producción. No re-proponer; la UI va en RYM_SUITE."
     }
   ],
   "last_session": {
-    "date": "2026-04-24",
+    "date": "2026-09-28",
     "completed": [
-      "Fork privado creado en GitHub (rrojashub-source/nexus-webmail)",
-      "npm install completado (node_modules en Linux filesystem)",
-      "Biome instalado y configurado",
-      "OAuth2 client 'nexus-webmail' registrado en Stalwart via REST API",
-      ".env.local configurado: JMAP_SERVER_URL, OAUTH_ENABLED, OAUTH_CLIENT_ID",
-      "Dev server corriendo en localhost:3001 — oauthEnabled=true verificado",
-      "Stalwart OAuth discovery funcionando (/.well-known/oauth-authorization-server)",
-      "CLAUDE.md + memory/shared/current_phase.md creados",
-      "Commit inicial pusheado a GitHub"
+      "Auditoría del estado real: prod en nexus-server con build viejo, 7 commits sin push, decisión deferred sin registrar",
+      "Push de los 7 commits a GitHub (325814d..8514129)",
+      "Consulta a RYM_SUITE: T313 correo integrado confirmado en producción",
+      "Decisión: archivar (opción A, aprobada por Ricardo)",
+      "Pedido a RED INTERNA: apagar contenedor, vhost público y client OAuth ID 44"
     ],
-    "next_step": "Verificar flujo login OAuth2 en browser (localhost:3000 via npm run dev). Bugs corregidos en S486: (1) redirect_uri incluía locale prefix incorrecto con localePrefix:never, (2) Stalwart tenía /api/auth/callback pero código genera /auth/callback, (3) JMAP_CLIENT_URL apuntaba a localhost:3001. Todo corregido. Si login funciona → Phase 2: branding RYM + deploy Docker Mini PC."
+    "next_step": "Ninguno en este repo. Esperar la confirmación de RED INTERNA de que la infra quedó apagada. Si algún día se quiere una UI de correo → hacerla en RYM_SUITE (T313)."
   }
 }

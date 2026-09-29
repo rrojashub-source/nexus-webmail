@@ -1,41 +1,18 @@
 # NEXUS Webmail — Estado actual
 
-**Fase:** Phase 1 — Configuración inicial + verificación
-**Fecha:** 2026-04-24
-**Versión fork:** 1.5.1
+**Fase:** ARCHIVADO (2026-09-28, aprobado por Ricardo)
 
-## ¿Qué hay hecho?
+## Por qué se archivó
+- **Webmail genérico:** lo cubre SnappyMail en VPS2 desde abril (17 cuentas, firmas, contactos).
+  T070 ya había quedado `deferred` el 2026-04-25 (handoff `2026-04-25-snappymail-vps2.md`).
+- **Correo con contexto de negocio:** existe en RYM_SUITE (T313), en producción: sync IMAP de 23 cuentas,
+  clasificador con vínculo a cotizaciones/SO/OP/facturas, vigía cada 10 min a Telegram, tarjetas en Kanban.
+  La UI de correo pendiente se hará DENTRO de RYM_SUITE, no aquí.
 
-El fork `root-fr/jmap-webmail` v1.5.1 ya incluye:
-- ✅ OAuth2 PKCE completo (`lib/oauth/`)
-- ✅ Cliente JMAP propio (`lib/jmap/client.ts`)
-- ✅ Session cookies HttpOnly (`lib/auth/`)
-- ✅ App Router Next.js 16 con rutas: login, inbox, calendar, contacts, settings
-- ✅ DOMPurify integrado en sanitización de email HTML
-- ✅ Zustand stores
-- ✅ Tailwind v4
-- ✅ Vitest + Testing Library
-- ✅ Dockerfile + docker-compose
+## Dónde quedó cada cosa
+- Código: GitHub `rrojashub-source/nexus-webmail`, main `8514129` (incluye fixes S486 + login_hint).
+- Producción (en apagado, a cargo de RED INTERNA): contenedor `nexus-webmail` en nexus-server :3002,
+  `https://webmail.ricardo-nexus.dev`, client OAuth `nexus-webmail` (ID 44) en Stalwart.
 
-## ¿Qué falta?
-
-- [ ] Reemplazar ESLint con Biome
-- [ ] Verificar que OAuth2 discovery funciona con Stalwart (`/.well-known/oauth-authorization-server`)
-- [ ] Login funcional end-to-end contra `mail.ricardo-nexus.dev`
-- [ ] Branding RYM (colores, logo)
-- [ ] Deploy Docker en Mini PC
-
-## Próximo paso inmediato
-
-Verificar que el dev server conecta con Stalwart y el login OAuth2 funciona.
-Si conecta → ir directo a branding RYM + deploy.
-Si hay issues de OAuth → diagnosticar endpoint discovery.
-
-## Variables de entorno configuradas (.env.local)
-- `JMAP_SERVER_URL=https://mail.ricardo-nexus.dev`
-- `APP_NAME=NEXUS Webmail — RYM Corporation`
-
-## OAuth2 client registrado en Stalwart
-- `client_id=nexus-webmail`
-- Redirect DEV: `http://localhost:3000/api/auth/callback` ✅
-- Redirect PROD: `https://webmail.rymcorporation.com/api/auth/callback` ✅
+## Si alguien reabre esto
+No lo revivas como webmail: la decisión y sus motivos están en `PROJECT_STATE.json` → `decisions`.
